@@ -6,5 +6,11 @@ class BarChart {
     this.place = element;
   }
   createChart() {}
+  getValues() {
+    return this.values;
+  }
+  setValues(value) {
+    this.values = values;
+  }
 }
 export default BarChart;
