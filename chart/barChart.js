@@ -5,4 +5,6 @@ class BarChart {
     this.height = options.height;
     this.place = element;
   }
+  createChart() {}
 }
+export default BarChart;
