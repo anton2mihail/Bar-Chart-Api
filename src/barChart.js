@@ -58,8 +58,8 @@ class BarChart {
   }
   setElementDisplay() {
     let el = document.querySelector(this.getElement());
-    el.style.width = 'fit-content';
-    el.style.height = 'fit-content';
+    el.style.width = this.width;
+    el.style.height = this.height;
     el.style.margin = '15% 0 0 35%';
     el.style.borderLeftWidth = '1px';
     el.style.borderLeftColor = 'blue';
