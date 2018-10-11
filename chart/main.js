@@ -1,7 +1,4 @@
 let formElements = ['#X-Axis', '#Y-Axis', '#data', '#barColor', '#labelColor'];
-const drawBarChart = (data, options, element) => {
-
-};
 const main = function () {
   for (let i = 0; i < formElements.length; i++) {
     $(formElements[i]).on('blur', (e) => {

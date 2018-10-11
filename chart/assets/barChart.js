@@ -5,7 +5,22 @@ class BarChart {
     this.height = options.height;
     this.place = element;
   }
-  createChart() {}
+  buildBars() {
+    let bars = [];
+    for (let i = 0; i < this.data.length; i++) {
+      bars.push({
+        'dataPoint': this.data[i],
+        'node': 'div',
+        'attributes': {
+          'id': 'bar'
+        }
+      });
+    }
+    return bars;
+  }
+  setBarDisplay() {
+
+  }
   getValues() {
     return this.values;
   }
