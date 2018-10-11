@@ -1,0 +1,38 @@
+i {
+  font-size: 171px;
+  margin-top: 55px;
+  color: salmon;
+}
+
+#inner {
+  position: absolute;
+}
+
+form {
+  margin-left: 10px;
+}
+
+body {
+  background-image: url(http://bit.ly/2gPLxZ4);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+
+
+
+
+#X-Axis,
+#Y-Axis {
+  width: 45%;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+
+h1 {
+  color: salmon;
+  margin-bottom: 80px;
+}
