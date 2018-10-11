@@ -1,0 +1,24 @@
+{
+  "name": "stretch-project-1",
+  "version": "0.0.0",
+  "description": "Bar-Chart-Api",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-lighthouselabs": "github:lighthouse-labs/eslint-config-lighthouselabs",
+    "jquery": "3.3.1"
+  },
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anton2mihail/Bar-Chart-Api.git"
+  },
+  "author": "Anton Lachmaniucu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anton2mihail/Bar-Chart-Api/issues"
+  },
+  "homepage": "https://github.com/anton2mihail/Bar-Chart-Api#readme"
+}

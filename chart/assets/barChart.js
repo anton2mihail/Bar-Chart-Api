@@ -12,5 +12,17 @@ class BarChart {
   setValues(value) {
     this.values = values;
   }
+  getOptions() {
+    return this.options;
+  }
+  setOptions(newOptions) {
+    this.options = newOptions;
+  }
+  getElement() {
+    return this.element;
+  }
+  setElement(newElement) {
+    this.element = newElement;
+  }
 }
 export default BarChart;
