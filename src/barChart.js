@@ -39,6 +39,8 @@ class BarChart {
   }
   makeFigure() {
     let el = document.createElement('figure');
+    let main = document.querySelector(element);
+    main.appendChild(el);
     return el;
   }
   setGraphProperties() {
@@ -73,8 +75,19 @@ class BarChart {
     }
     return graph;
   }
+  labelVs() {
+    let graph = this.setGraphRowLabels();
+    let vs = document.createElement('span');
+    let sup = document.createElement('sup');
+    sup.innerText = '' + this.options.y;
+    let sub = document.createElement('sub');
+    sub.innerText = '' + this.options.x;
+    vs.innerHTML = sup + '&frasl;' + sub;
+    graph.appendChild(vs);
+    return graph;
+  }
   setGraphColumnLabels() {
-    let graph = this.setGraphBars();
+    let graph = this.labelVs();
     for (let i = 0; i < this.values.length; i++) {
       let colLabel = document.createElement('span');
       colLabel.className = 'graphColumnLabel';
