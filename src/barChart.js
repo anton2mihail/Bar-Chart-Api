@@ -23,27 +23,28 @@ class BarChart {
   setElement(newElement) {
     this.element = newElement;
   }
-  setDocument() {
-    let bd = document.querySelector('body');
-    bd.style.height = '100vh';
-    bd.style.overflow = 'hidden';
-    bd.style.fontWeight = 'bold';
+  setDocumentStylesheet() {
+    let def = 'palegoldenrod';
+    var s = document.createElement('style');
+    s.type = 'text/css';
+    s.innerText = '.graph {display : grid;grid : repeat(10, auto)max-content / max-content repeat(' + this.values.length + ', auto);height : 100%;}/* graph bars */.graphBar {grid-row: 1 / -2;background: ' + this.options.barColor || def + 'linear-gradient(to top, gold var(--h), transparent var(--h));justify-self: cente' +
+        'r;width: ' + Math.floor(225 / this.values.length) + 'px;height: 100%;text-align: center;transition: 0.3s all ease-in;}.graphBar:hover' +
+        ' {opacity: 0.7;box-shadow: 3px 3px 2 3;}/* graph  labels */.graphRowLabel {margi' +
+        'n-top: -0.5em;}.graphColumnLabel {justify-self: center;margin-top: 6px;}body {he' +
+        'ight: 100vh;font-weight: bold;overflow: hidden;}figure {width: ' + this.width + ';max-width: 600px;height: ' + this.height + ';margin: 60px auto auto auto;}figcaption {text-align: center;margin-top: 30px;}h' +
+        '1 {text-align: center;font-size: 14pt;margin-bottom: 0;}';
+    document
+      .head
+      .appendChild(s);
   }
-  setFigureDisplay() {
+  makeFigure() {
     let el = document.createElement('figure');
-    el.style.maxWidth = '600px';
-    el.style.width = this.width;
-    el.style.height = this.height;
-    el.style.margin = '60px auto auto auto';
     return el;
   }
   setGraphProperties() {
-    let parent = this.setFigureDisplay();
+    let parent = this.makeFigure();
     let graph = document.createElement('div');
     graph.className = 'graph';
-    graph.style.display = 'grid';
-    graph.style.grid = 'repeat(10, auto) max-content / max-content repeat(5, auto)';
-    graph.style.height = '100%';
     parent.appendChild(graph);
     return graph;
   }
@@ -54,14 +55,33 @@ class BarChart {
     for (let i = 10; i > 0; i--) {
       let spn = document.createElement('span');
       spn.className = 'graphRowLabel';
-      spn.style.marginTop = '-0.5em';
       spn.innerHTML = '' + step * i + ' --';
       graph.appendChild(spn);
     }
+    return graph;
   }
-  buildBars() {
-    let bars = [];
-    for (let i = 0; i < this.values.length; i++) {}
+  setGraphBars() {
+    let graph = this.setGraphRowLabels();
+    for (let i = 0; i < this.values.length; i++) {
+      let bar = document.createElement('div');
+      bar.className = 'graphBar';
+      bar.style.gridColumn = i + 2;
+      bar
+        .style
+        .setProperty('--h', '' + Math.round((this.values[i] / Math.max(this.values)) * 100));
+      graph.appendChild(bar);
+    }
+    return graph;
+  }
+  setGraphColumnLabels() {
+    let graph = this.setGraphBars();
+    for (let i = 0; i < this.values.length; i++) {
+      let colLabel = document.createElement('span');
+      colLabel.className = 'graphColumnLabel';
+      colLabel.innerHTML = '' + this.options.dataLabel[i];
+      graph.appendChild(colLabel);
+    }
+    return graph;
   }
 
 }
