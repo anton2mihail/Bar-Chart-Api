@@ -1,8 +1,11 @@
+'use strict';
+
 class BarChart {
   constructor(data, options, element) {
-    this.values = data.split(',');
+    this.values = data;
     this.width = options.width;
     this.height = options.height;
+    this.options = options;
     this.place = element;
   }
   getValues() {
@@ -27,8 +30,7 @@ class BarChart {
     let def = 'palegoldenrod';
     var s = document.createElement('style');
     s.type = 'text/css';
-    s.innerText = '.graph {display : grid;grid : repeat(10, auto)max-content / max-content repeat(' + this.values.length + ', auto);height : 100%;}/* graph bars */.graphBar {grid-row: 1 / -2;background: ' + this.options.barColor || def + 'linear-gradient(to top, gold var(--h), transparent var(--h));justify-self: cente' +
-        'r;width: ' + Math.floor(225 / this.values.length) + 'px;height: 100%;text-align: center;transition: 0.3s all ease-in;}.graphBar:hover' +
+    s.innerText = '.graph {display : grid;grid : repeat(10, auto)max-content / max-content repeat(' + this.values.length + ', auto);height : 100%;}/* graph bars */.graphBar {grid-row: 1 / -2;background: ' + this.options.backdropColor + ' linear-gradient(to top, ' + this.options.barColor + ' var(--h), transparent var(--h));justify-self: center;width: ' + Math.floor(225 / this.values.length) + 'px;height: 100%;text-align: center;transition: 0.1s all ease-in;}.graphBar:hover' +
         ' {opacity: 0.7;box-shadow: 3px 3px 2 3;}/* graph  labels */.graphRowLabel {margi' +
         'n-top: -0.5em;}.graphColumnLabel {justify-self: center;margin-top: 6px;}body {he' +
         'ight: 100vh;font-weight: bold;overflow: hidden;}figure {width: ' + this.width + ';max-width: 600px;height: ' + this.height + ';margin: 60px auto auto auto;}figcaption {text-align: center;margin-top: 30px;}h' +
@@ -38,76 +40,71 @@ class BarChart {
       .appendChild(s);
   }
   makeFigure() {
-    let el = document.createElement('figure');
-    let main = document.querySelector(element);
-    main.appendChild(el);
-    return el;
+    $('body').append('<figure></figure>');
   }
   setGraphProperties() {
-    let parent = this.makeFigure();
-    let graph = document.createElement('div');
-    graph.className = 'graph';
-    parent.appendChild(graph);
-    return graph;
+    this.makeFigure();
+    console.log($('figure'));
+    $('figure').append('<div class="graph"></div>');
   }
   setGraphRowLabels() {
-    let graph = this.setGraphProperties();
-    let maxScale = Math.max(this.values);
-    let step = Math.round(maxScale / 10);
+    this.setGraphProperties();
+    var max = this
+      .getValues()
+      .reduce(function (a, b) {
+        return Math.max(a, b);
+      });
+    let step = Math.round(max / 10);
+    console.log(max);
     for (let i = 10; i > 0; i--) {
       let spn = document.createElement('span');
       spn.className = 'graphRowLabel';
       spn.innerHTML = '' + step * i + ' --';
-      graph.appendChild(spn);
+      $('.graph').append(spn);
+
     }
-    return graph;
+    return step * 10;
   }
   setGraphBars() {
-    let graph = this.setGraphRowLabels();
+    let max = this.setGraphRowLabels();
     for (let i = 0; i < this.values.length; i++) {
       let bar = document.createElement('div');
       bar.className = 'graphBar';
       bar.style.gridColumn = i + 2;
       bar
         .style
-        .setProperty('--h', '' + Math.round((this.values[i] / Math.max(this.values)) * 100));
-      graph.appendChild(bar);
+        .setProperty('--h', '' + (this.values[i] / max) * 100 + '%');
+      $('.graph').append(bar);
     }
-    return graph;
   }
   labelVs() {
-    let graph = this.setGraphBars();
+    this.setGraphBars();
     let vs = document.createElement('span');
-    let sup = document.createElement('sup');
-    sup.innerText = '' + this.options.y;
-    let sub = document.createElement('sub');
-    sub.innerText = '' + this.options.x;
-    vs.innerHTML = sup + '&frasl;' + sub;
-    graph.appendChild(vs);
-    return graph;
+    vs.className = 'axVs';
+    let op = this.getOptions();
+    $('.graph').append(vs);
+    $('.axVs').append('<sup>' + op.y + '</sup>&frasl;<sub>' + op.x + '</sub>');
   }
   setGraphColumnLabels() {
-    let graph = this.labelVs();
+    this.labelVs();
     for (let i = 0; i < this.values.length; i++) {
       let colLabel = document.createElement('span');
       colLabel.className = 'graphColumnLabel';
       colLabel.innerHTML = '' + this.options.dataLabel[i];
-      graph.appendChild(colLabel);
+      $('.graph').append(colLabel);
     }
   }
   createBarGraph() {
     this.setGraphColumnLabels();
-    let body = document.body;
-    let fig = document.querySelector('figure');
     let title = document.createElement('h1');
     title.className = 'graphTitle';
     title.innerText = '' + this.options.y + ' vs ' + this.options.x;
-    body.prepend(title);
+    $('body').prepend(title);
     let cap = document.createElement('figcaption');
-    cap.innerText = '' + this.options.x;
-    fig.appendChild(cap);
+    $('figcaption').text('' + this.options.x);
+    $('figure').append(cap);
+    this.setDocumentStylesheet();
     return true;
   }
 
 }
-export default BarChart;
