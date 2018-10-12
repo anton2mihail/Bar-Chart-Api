@@ -76,7 +76,7 @@ class BarChart {
     return graph;
   }
   labelVs() {
-    let graph = this.setGraphRowLabels();
+    let graph = this.setGraphBars();
     let vs = document.createElement('span');
     let sup = document.createElement('sup');
     sup.innerText = '' + this.options.y;
@@ -94,7 +94,19 @@ class BarChart {
       colLabel.innerHTML = '' + this.options.dataLabel[i];
       graph.appendChild(colLabel);
     }
-    return graph;
+  }
+  createBarGraph() {
+    this.setGraphColumnLabels();
+    let body = document.body;
+    let fig = document.querySelector('figure');
+    let title = document.createElement('h1');
+    title.className = 'graphTitle';
+    title.innerText = '' + this.options.y + ' vs ' + this.options.x;
+    body.prepend(title);
+    let cap = document.createElement('figcaption');
+    cap.innerText = '' + this.options.x;
+    fig.appendChild(cap);
+    return true;
   }
 
 }
