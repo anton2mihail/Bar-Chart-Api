@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/anton2mihail/Bar-Chart-Api/issues"
   },
-  "homepage": "https://github.com/anton2mihail/Bar-Chart-Api#readme"
+  "homepage": "https://github.com/anton2mihail/Bar-Chart-Api#readme",
+  "dependencies": {
+    "css-element-queries": "^1.0.2"
+  }
 }

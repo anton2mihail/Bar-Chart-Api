@@ -1,6 +1,6 @@
 class BarChart {
   constructor(data, options, element) {
-    this.values = data;
+    this.values = data.split(',');
     this.width = options.width;
     this.height = options.height;
     this.place = element;
@@ -23,50 +23,45 @@ class BarChart {
   setElement(newElement) {
     this.element = newElement;
   }
-  buildBars() {
-    let bars = [];
-    for (let i = 0; i < this.data.length; i++) {
-      let bar = document.createElement('div');
-      bar.style.transition = 'all .5s ease-in-out';
-      bar.style.display = 'inline-block';
-      bar.style.position = 'relative';
-      bar.style.width = '40px';
-      bar.style.margin = '8px';
-      bar.style.backgroundColor = this.options.barColor;
-      bar.style.verticalAlign = 'baseline';
-      let p = document.createElement('p');
-      p.innerText = this.data[i];
-      p.style.position = 'absolute';
-      p.style.height = '100%';
-      p.style.width = '100%';
-      p.style.padding = '0';
-      p.style.margin = '0';
-      p.style.textAlign = 'center';
-      bars.push([bar, p]);
-    }
-    return bars;
-  }
   setDocument() {
     let bd = document.querySelector('body');
-    let ht = document.querySelector('html');
-    bd.style.width = '100%';
-    bd.style.height = '100%';
-    ht.style.width = '100%';
-    ht.style.height = '100%';
+    bd.style.height = '100vh';
     bd.style.overflow = 'hidden';
-    ht.style.overflow = 'hidden';
+    bd.style.fontWeight = 'bold';
   }
-  setElementDisplay() {
-    let el = document.querySelector(this.getElement());
+  setFigureDisplay() {
+    let el = document.createElement('figure');
+    el.style.maxWidth = '600px';
     el.style.width = this.width;
     el.style.height = this.height;
-    el.style.margin = '15% 0 0 35%';
-    el.style.borderLeftWidth = '1px';
-    el.style.borderLeftColor = 'blue';
-    el.style.borderBottomWidth = '1px';
+    el.style.margin = '60px auto auto auto';
+    return el;
   }
-  setBarDisplay() {
-
+  setGraphProperties() {
+    let parent = this.setFigureDisplay();
+    let graph = document.createElement('div');
+    graph.className = 'graph';
+    graph.style.display = 'grid';
+    graph.style.grid = 'repeat(10, auto) max-content / max-content repeat(5, auto)';
+    graph.style.height = '100%';
+    parent.appendChild(graph);
+    return graph;
+  }
+  setGraphRowLabels() {
+    let graph = this.setGraphProperties();
+    let maxScale = Math.max(this.values);
+    let step = Math.round(maxScale / 10);
+    for (let i = 10; i > 0; i--) {
+      let spn = document.createElement('span');
+      spn.className = 'graphRowLabel';
+      spn.style.marginTop = '-0.5em';
+      spn.innerHTML = '' + step * i + ' --';
+      graph.appendChild(spn);
+    }
+  }
+  buildBars() {
+    let bars = [];
+    for (let i = 0; i < this.values.length; i++) {}
   }
 
 }
