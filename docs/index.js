@@ -60,5 +60,5 @@ let element2 = 'second';
 
 let barChart = new BarChart(data, options, element);
 barChart.createBarGraph();
-let otherbarChart = new BarChart(data2, options2, element2)
-otherbarChart.createBarGraph();
+// let otherbarChart = new BarChart(data2, options2, element2);
+// otherbarChart.createBarGraph();
