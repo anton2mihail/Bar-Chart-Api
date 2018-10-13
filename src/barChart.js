@@ -147,6 +147,13 @@ class BarChart {
     }
     return step * 10;
   }
+
+  /**
+   *@method setGraphBars
+   *    Creates the divs that will contain the graph bars, sets the css var --h for background use
+   *
+   * @memberof BarChart
+   */
   setGraphBars() {
     let max = this.setGraphRowLabels();
     for (let i = 0; i < this.values.length; i++) {
@@ -169,6 +176,13 @@ class BarChart {
       $('.graph').append(bar);
     }
   }
+
+  /**
+   *@method labelVs
+   *    Set x-Axis labels and y-Axis labels
+   *
+   * @memberof BarChart
+   */
   labelVs() {
     this.setGraphBars();
     let vs = document.createElement('span');
