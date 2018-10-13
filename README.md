@@ -1,6 +1,6 @@
 # Bar Chart Api
 
-A simple barchart api written in javascript that create customisable barcharts that can be placed anywhere on the page.
+A simple Bar Chart api written in javascript that create custom barcharts that can be placed anywhere on the page.
 
 ## Getting Started
 
@@ -107,7 +107,7 @@ index.html
 </head>
 
 <body>
-  <div name='place' id="place"></div>
+  <div id="place"></div>
   <script src="barChart.js"></script>
   <script src="index.js"></script>
 </body>
