@@ -21,10 +21,10 @@ class BarChart {
     this.options = newOptions;
   }
   getElement() {
-    return this.element;
+    return this.place;
   }
   setElement(newElement) {
-    this.element = newElement;
+    this.place = newElement;
   }
   setDocumentStylesheet() {
     let def = 'palegoldenrod';
@@ -40,11 +40,11 @@ class BarChart {
       .appendChild(s);
   }
   makeFigure() {
-    $('body').append('<figure></figure>');
+    let el = document.getElementById(this.place);
+    $(el).append('<figure></figure>');
   }
   setGraphProperties() {
     this.makeFigure();
-    console.log($('figure'));
     $('figure').append('<div class="graph"></div>');
   }
   setGraphRowLabels() {
@@ -55,7 +55,6 @@ class BarChart {
         return Math.max(a, b);
       });
     let step = Math.round(max / 10);
-    console.log(max);
     for (let i = 10; i > 0; i--) {
       let spn = document.createElement('span');
       spn.className = 'graphRowLabel';
@@ -69,11 +68,21 @@ class BarChart {
     let max = this.setGraphRowLabels();
     for (let i = 0; i < this.values.length; i++) {
       let bar = document.createElement('div');
+      let innerLabel;
+      let barHeight = (this.values[i] / max) * 100;
+      if (this.options.innerLabel === 'middle') {
+        innerLabel = ((barHeight / 2) + (100 - barHeight)) + '%';
+      } else if (this.options.innerLabel === 'bottom') {
+        innerLabel = 95 + '%';
+      } else {
+        innerLabel = 100 - (barHeight) + '%';
+      }
       bar.className = 'graphBar';
       bar.style.gridColumn = i + 2;
+      bar.innerHTML = '<span style="position:relative;top:' + innerLabel + ';"><i>' + this.values[i] + '</i></span>';
       bar
         .style
-        .setProperty('--h', '' + (this.values[i] / max) * 100 + '%');
+        .setProperty('--h', '' + barHeight + '%');
       $('.graph').append(bar);
     }
   }
@@ -98,6 +107,12 @@ class BarChart {
     this.setGraphColumnLabels();
     let title = document.createElement('h1');
     title.className = 'graphTitle';
+    if (this.options.titleFontSize !== '') {
+      title.style.fontSize = this.options.fontSize + 'px';
+    }
+    if (this.options.titleColor !== '') {
+      title.style.color = this.options.titleColor;
+    }
     title.innerText = '' + this.options.y + ' vs ' + this.options.x;
     $('body').prepend(title);
     let cap = document.createElement('figcaption');
@@ -108,3 +123,4 @@ class BarChart {
   }
 
 }
+
