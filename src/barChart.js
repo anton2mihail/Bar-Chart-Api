@@ -69,11 +69,21 @@ class BarChart {
     let max = this.setGraphRowLabels();
     for (let i = 0; i < this.values.length; i++) {
       let bar = document.createElement('div');
+      let innerLabel;
+      let barHeight = (this.values[i] / max) * 100;
+      if (this.options.innerLabel === 'middle') {
+        innerLabel = ((barHeight / 2) + (100 - barHeight)) + '%';
+      } else if (this.options.innerLabel === 'bottom') {
+        innerLabel = 95 + '%';
+      } else {
+        innerLabel = 100 - (barHeight) + '%';
+      }
       bar.className = 'graphBar';
       bar.style.gridColumn = i + 2;
+      bar.innerHTML = '<span style="position:relative;top:' + innerLabel + ';"><i>' + this.values[i] + '</i></span>';
       bar
         .style
-        .setProperty('--h', '' + (this.values[i] / max) * 100 + '%');
+        .setProperty('--h', '' + barHeight + '%');
       $('.graph').append(bar);
     }
   }
@@ -98,6 +108,12 @@ class BarChart {
     this.setGraphColumnLabels();
     let title = document.createElement('h1');
     title.className = 'graphTitle';
+    if (this.options.titleFontSize !== '') {
+      title.style.fontSize = this.options.fontSize + 'px';
+    }
+    if (this.options.titleColor !== '') {
+      title.style.color = this.options.titleColor;
+    }
     title.innerText = '' + this.options.y + ' vs ' + this.options.x;
     $('body').prepend(title);
     let cap = document.createElement('figcaption');
@@ -108,3 +124,4 @@ class BarChart {
   }
 
 }
+
