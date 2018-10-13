@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/anton2mihail/Bar-Chart-Api#readme",
   "dependencies": {
-    "css-element-queries": "^1.0.2"
+    "css-element-queries": "^1.0.2",
+    "jquery": "3.3.1"
   }
 }
