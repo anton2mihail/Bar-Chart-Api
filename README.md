@@ -21,7 +21,7 @@ The only dependency required for this api to function correctly is jquery, so ad
 
 ### Usage
 
-Usage is pretty easy because it is simlpy packaged as a class.
+Usage is pretty easy because it is simply packaged as a class.
 
 Declare your parameters:
   First is a comma seperated list of data values that you want the bars to display
