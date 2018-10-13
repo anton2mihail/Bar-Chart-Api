@@ -21,10 +21,10 @@ class BarChart {
     this.options = newOptions;
   }
   getElement() {
-    return this.element;
+    return this.place;
   }
   setElement(newElement) {
-    this.element = newElement;
+    this.place = newElement;
   }
   setDocumentStylesheet() {
     let def = 'palegoldenrod';
@@ -40,11 +40,11 @@ class BarChart {
       .appendChild(s);
   }
   makeFigure() {
-    $('body').append('<figure></figure>');
+    let el = document.getElementById(this.place);
+    $(el).append('<figure></figure>');
   }
   setGraphProperties() {
     this.makeFigure();
-    console.log($('figure'));
     $('figure').append('<div class="graph"></div>');
   }
   setGraphRowLabels() {
@@ -55,7 +55,6 @@ class BarChart {
         return Math.max(a, b);
       });
     let step = Math.round(max / 10);
-    console.log(max);
     for (let i = 10; i > 0; i--) {
       let spn = document.createElement('span');
       spn.className = 'graphRowLabel';
