@@ -1,6 +1,6 @@
 # Bar Chart Api
 
-A simple Bar Chart api written in javascript that create custom barcharts that can be placed anywhere on the page.
+A simple Bar Chart api written in javascript that creates custom barcharts that can be placed anywhere on the page.
 
 ## Getting Started
 
@@ -35,21 +35,27 @@ let data = [45,74,95,34,65,44,85,54];
   * Chart Width
   
      _Specifies the width of the chart in pixels. Make sure to actually include px when writing; Example:_`200px`  
+     
   * Chart Height
   
      _Specifies the height of the chart in pixels. Same syntax as above._
+     
   * Y-Axis Title
   
      _This property is set with simply writing_ `'y':'Axis Title'`
+     
   * X-Axis Title
   
      _This property is set simmilarly to the y-axis title_ `'x':'Axis Title'`
+     
   * Data Labels
   
      _This property is set as an array. Make sure to give the bar labels in the order that the data was given. For example:_`'dataLabel':['a','b','c','d','e','f','g','h']` 
+     
   * Inner Data Value Position
   
      _This property refers to the position in which each data value shoud be placed within its respective bar, it has two options, if this parameter is excluded, the default position is top; The two options are:`bottom`, or `middle`. An Example would be `'innerLabel':''` --> Would set the labels at the tops of the bars.
+     
   * Title font Size
   
      _The title of the graph is generated automatically, but it's font size can be changed by adding this property to the options object like so: `'titleFontSize':'23px'`
