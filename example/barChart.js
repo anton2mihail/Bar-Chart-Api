@@ -191,6 +191,13 @@ class BarChart {
     $('.graph').append(vs);
     $('.axVs').append('<sup>' + op.y + '</sup>&frasl;<sub>' + op.x + '</sub>');
   }
+
+  /**
+   *@method setGraphColumnLabels
+   *    Sets span labels for each data item
+   *
+   * @memberof BarChart
+   */
   setGraphColumnLabels() {
     this.labelVs();
     for (let i = 0; i < this.values.length; i++) {
@@ -200,6 +207,14 @@ class BarChart {
       $('.graph').append(colLabel);
     }
   }
+
+  /**
+   *@method createBarGraph
+   *    Adds a graph title and a x-Axis title
+   *
+   * @returns true if function was called
+   * @memberof BarChart
+   */
   createBarGraph() {
     this.setGraphColumnLabels();
     let title = document.createElement('h1');
@@ -211,7 +226,7 @@ class BarChart {
       title.style.color = this.options.titleColor;
     }
     title.innerText = '' + this.options.y + ' vs ' + this.options.x;
-    $('body').prepend(title);
+    $(this.place).prepend(title);
     let cap = document.createElement('figcaption');
     $('figcaption').text('' + this.options.x);
     $('figure').append(cap);
