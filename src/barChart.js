@@ -1,4 +1,3 @@
-'use strict';
 /**
  *Creates an instance of BarChart.
  * @param {*} data
