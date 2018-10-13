@@ -5,7 +5,7 @@ A simple barchart api written in javascript that create customisable barcharts t
 ## Getting Started
 
 All that needs to be done when using this is to clone this repo, and move the `barChart.js` file into your working directory and link it as a script in the head, or body of your html document.
-```
+```html
 <script src='pathToFile/barChart.js'></script>
 ```
 Make sure that this script link is placed before your own script link(s) so that you have acess to it when writing your javascript code. 
@@ -13,7 +13,7 @@ Make sure that this script link is placed before your own script link(s) so that
 ### Prerequisites
 
 The only dependency required for this api to function correctly is jquery, so add that as a script tag in your head html element before any other scripts like so -->
-```
+```html
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
     <script src='anyOtherScripts.js'></script>
@@ -93,7 +93,7 @@ let barChart = new BarChart(data, options, element);
 barChart.createBarGraph();
 ```
 index.html
-```
+```html
 <!DOCTYPE html>
 <html>
 
