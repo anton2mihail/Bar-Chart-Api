@@ -1,5 +1,14 @@
 'use strict';
-
+/**
+ *Creates an instance of BarChart.
+ * @param {*} data
+ *    Array that contains Data Values
+ * @param {*} options
+ *    An Object that contains some mandatory customization as well as some that is optional
+ * @param {*} element
+ *    The id of the element on the page within which to place the graph
+ *
+ */
 class BarChart {
   constructor(data, options, element) {
     this.values = data;
@@ -8,24 +17,73 @@ class BarChart {
     this.options = options;
     this.place = element;
   }
+
+  /**
+   *@method getValues
+   *
+   * @returns data array
+   * @memberof BarChart
+   */
   getValues() {
     return this.values;
   }
+
+  /**
+   *@method setValues
+   *
+   * @param {*} values
+   * @memberof BarChart
+   */
   setValues(values) {
     this.values = values;
   }
+
+  /**
+   *@method getOptions
+   *
+   * @returns options object
+   * @memberof BarChart
+   */
   getOptions() {
     return this.options;
   }
+
+  /**
+   *@method setOptions
+   *
+   * @param {*} newOptions
+   * @memberof BarChart
+   */
   setOptions(newOptions) {
     this.options = newOptions;
   }
+
+  /**
+   *@method getElement
+   *
+   * @returns id of element on the html document
+   * @memberof BarChart
+   */
   getElement() {
     return this.place;
   }
+
+  /**
+   *@method setElement
+   *
+   * @param {*} newElement
+   * @memberof BarChart
+   */
   setElement(newElement) {
     this.place = newElement;
   }
+
+  /**
+   *@method setDocumentStylesheet
+   *    Sets inline Styles by class for the following elements
+   *
+   * @memberof BarChart
+   */
   setDocumentStylesheet() {
     let def = 'palegoldenrod';
     var s = document.createElement('style');
@@ -39,16 +97,41 @@ class BarChart {
       .head
       .appendChild(s);
   }
+
+  /**
+   *@method makeFigure
+   *    Creates html figure element
+   *
+   * @memberof BarChart
+   */
   makeFigure() {
     let el = document.getElementById(this.place);
-    $(el).append('<figure></figure>');
+    let fig = document.createElement('figure');
+    $(el).append(fig);
   }
-  setGraphProperties() {
+
+  /**
+   *@method addGraphElement
+   *    Adds an html div with a class of graph to the page
+   *
+   * @memberof BarChart
+   */
+  addGraphElement() {
     this.makeFigure();
-    $('figure').append('<div class="graph"></div>');
+    let div = document.createElement('div');
+    div.className = 'graph';
+    $('figure').append(div);
   }
+
+  /**
+   *@method setGraphRowLabels
+   *    Sets the graph scale
+   *
+   * @returns The highest number in the graph scale
+   * @memberof BarChart
+   */
   setGraphRowLabels() {
-    this.setGraphProperties();
+    this.addGraphElement();
     var max = this
       .getValues()
       .reduce(function (a, b) {
