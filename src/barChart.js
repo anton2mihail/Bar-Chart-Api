@@ -11,7 +11,7 @@ class BarChart {
   getValues() {
     return this.values;
   }
-  setValues(value) {
+  setValues(values) {
     this.values = values;
   }
   getOptions() {
@@ -123,4 +123,3 @@ class BarChart {
   }
 
 }
-
