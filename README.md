@@ -54,7 +54,14 @@ let data = [45,74,95,34,65,44,85,54];
   
      _The title of the graph is generated automatically, but it's font size can be changed by adding this property to the options object like so: `'titleFontSize':'23px'`
      
-###### More options are coming Soon
+     
+###### More options are coming Soon...
+
+
+
+
+
+
 
   Finally you must give the id of the container within which you want to place the graph: `let element = 'idOfContainer';`
   Now create an instance of the bar chart class passing in these parameters, and call the `createBarGraph()` method on the BarChart object. 
