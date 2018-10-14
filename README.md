@@ -173,4 +173,5 @@ index.html
 ## Acknowledgments
 
 * MDN Web Documentation, because without it I wouldn't know any fancy css commands...
+* StackOverflow, it is a godsend when dealing with weird bugs.
 
