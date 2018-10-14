@@ -60,8 +60,14 @@ let data = [45,74,95,34,65,44,85,54];
   
      _The title of the graph is generated automatically, but it's font size can be changed by adding this property to the options object like so: `'titleFontSize':'23px'`
      
-     
-###### More options are coming Soon...
+   * Individual Data Label Colors
+      _This can be passed in as an array of colors written in literal format ie.('red','blue'), or in hex code ie.(#fff), regardless the length of this list must be the same as the length of the data array. It is included as `'labelColors'`.
+      
+   * Individual Bar Colors
+      _Simmilar to data label colors this is included as an array with the same color formats available as the labels. The length of this list must as well be equal to the length of the data array. It is used as `'barColor'`.
+      
+      
+###### More options are coming Soon (Multiple Values for each bar as well as customization for each)...
 
 
 
