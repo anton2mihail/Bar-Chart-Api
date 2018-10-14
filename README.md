@@ -99,18 +99,43 @@ let data = [
 let options = {
   'width': '600px',
   'height': '420px',
+  'barColor': [
+    'yellow',
+    'orange',
+    'brown',
+    'gold',
+    'silver',
+    'yellow',
+    'silver',
+    'orange'
+  ],
   'y': 'Y-Axis Title',
   'x': 'X-Axis Title',
-  'dataLabel': ['x','x','x','x','x','x','x','x'],
-  'innerLabel': 'top',
-  'titleFontSize': '',
-  'titleColor': ''
+  'dataLabel': [
+    'x',
+    'x',
+    'x',
+    'x',
+    'x',
+    'x',
+    'x',
+    'x'
+  ],
+  'labelColors': [
+    'yellow',
+    'orange',
+    'brown',
+    'gold',
+    'silver',
+    'yellow',
+    'silver',
+    'orange'
+  ],
+  'backdropColor': 'lightblue'
 }
 let element = 'place';
-
 let barChart = new BarChart(data, options, element);
-barChart.createBarGraph();
-```
+barChart.createBarGraph();```
 index.html
 ```html
 <!DOCTYPE html>
