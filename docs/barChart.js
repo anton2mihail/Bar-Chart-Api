@@ -202,6 +202,9 @@ class BarChart {
       let colLabel = document.createElement('span');
       colLabel.className = 'graphColumnLabel';
       colLabel.innerHTML = '' + this.options.dataLabel[i];
+      if (this.options.labelColors.length = this.values.length) {
+        colLabel.style.color = this.options.labelColors[i];
+      }
       $('.graph').append(colLabel);
     }
   }
@@ -224,7 +227,7 @@ class BarChart {
       title.style.color = this.options.titleColor;
     }
     title.innerText = '' + this.options.y + ' vs ' + this.options.x;
-    $(this.place).prepend(title);
+    $('#' + this.place).prepend(title);
     let cap = document.createElement('figcaption');
     $('figcaption').text('' + this.options.x);
     $('figure').append(cap);

@@ -24,6 +24,16 @@ let options = {
     'x',
     'x'
   ],
+  'labelColors': [
+    'yellow',
+    'orange',
+    'brown',
+    'gold',
+    'silver',
+    'yellow',
+    'silver',
+    'orange'
+  ],
   'backdropColor': 'green'
 }
 let element = 'place';
