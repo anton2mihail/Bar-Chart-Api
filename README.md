@@ -135,7 +135,8 @@ let options = {
 }
 let element = 'place';
 let barChart = new BarChart(data, options, element);
-barChart.createBarGraph();```
+barChart.createBarGraph();
+```
 index.html
 ```html
 <!DOCTYPE html>
@@ -159,7 +160,7 @@ index.html
 </html>
 ```
 #### Result ->
-![alt text](https://github.com/anton2mihail/Bar-Chart-Api/blob/master/docs/screenshots/ExampleImplementation.png 'Example')
+![alt text](https://github.com/anton2mihail/Bar-Chart-Api/blob/master/docs/screenshots/ImplementationExample.png 'Example')
 
 
 ## Authors
