@@ -128,7 +128,7 @@ index.html
 </html>
 ```
 #### Result ->
-![alt text](https://github.com/anton2mihail/Bar-Chart-Api/tree/master/docs/screenshots 'Example')
+![alt text](https://github.com/anton2mihail/Bar-Chart-Api/blob/master/docs/screenshots/ExampleImplementation.png 'Example')
 
 
 ## Authors
