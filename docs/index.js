@@ -11,7 +11,16 @@ let data = [
 let options = {
   'width': '600px',
   'height': '420px',
-  'barColor': 'blue',
+  'barColor': [
+    'yellow',
+    'orange',
+    'brown',
+    'gold',
+    'silver',
+    'yellow',
+    'silver',
+    'orange'
+  ],
   'y': 'Y-Axis Title',
   'x': 'X-Axis Title',
   'dataLabel': [
@@ -34,7 +43,7 @@ let options = {
     'silver',
     'orange'
   ],
-  'backdropColor': 'green'
+  'backdropColor': 'lightblue'
 }
 let element = 'place';
 let barChart = new BarChart(data, options, element);
