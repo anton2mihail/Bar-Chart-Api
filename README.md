@@ -81,6 +81,9 @@ let data = [45,74,95,34,65,44,85,54];
   let barGraph = new BarChart(data, options, element);
   barGraph.createBarGraph();
   ```
+### Known Issues/Bugs
+  - Cannot create more than one instance of the graph at a time. (Fix Coming soon)
+  
   
 #### Example Implementation
 
