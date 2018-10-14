@@ -87,7 +87,7 @@ let data = [45,74,95,34,65,44,85,54];
   
 #### Example Implementation
 
-main.js
+index.js
 ```javascript
 let data = [
   45,
